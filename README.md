@@ -26,3 +26,16 @@
 - `git reset --hard HEAD~1` hủy commit cuối, con trỏ HEAD sẽ chuyển về commit trước đó, những thay đổi của commit sẽ bị hủy hoàn toàn
 - `git reset` hủy bỏ các thông tin cập nhật tại vùng **staged**
 - `git reset -- filename` hủy bỏ thông tin cập nhật của một file bất kì tại vùng **staged**
+## `git log` - xem lại thông tin lịch sử commit (mã HASH, Author, Date, Message)
+- `git log -2` hiển thị thông tin lịch sử 2 commit cuối
+- `git log -p` hiển thị chi tiết các thay đổi của từng commit
+- `git log --stat` hiển thị thống kê ngắn gọn hơn về sự thay đổi
+- `git log --pretty=oneline` hoặc `git log --oneline` hiển thị thông tin trên một dòng
+- `git log --after="year-month-day" --before="year-month-day"` hiển thị thông tin commit lọc theo thời gian
+- `git log --author="tác giả"` hiển thị thông tin commit lọc theo tác giả, có thể kết hợp nhiều người bằng ký hiệu `\|`
+- `git log --grep="Ghi chú về commit"` hiển thị thông tin commit lọc theo thông tin ghi chú
+## `git diff` kiểm tra sự thay đổi trên Git
+- `git diff` kiểm tra sự thay đổi các file giữa thư mục làm việc và các file trong **staged** (nếu không có thì so sánh với các file ở **commit cuối**)
+- `git diff --staged` kiểm tra sự thay đổi các file giữa vùng **staged** và vùng **commit cuối**
+- `git diff hash-commit1 hash-commit2` kiểm tra sự thay đổi các file giữa hai commit
+- `git diff branch1 branch2` kiểm tra sự thay đổi các file giữa 2 nhánh
