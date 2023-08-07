@@ -21,3 +21,8 @@
 - `git commit -m "Ghi chú về commit"` tạo commit cơ bản với nội dung lấy từ vùng **staged**
 - `git commit -a -m "Ghi chú về commit"` tạo commit cơ bản đưa các file đang được giám sát có sự thay đổi vào vùng **staged**
 - `git commit --amend -m "Ghi chú về commit"` cập nhật thông tin vào commit cuối, hay ta có thể hiểu tạo commit mới thay thế cho commit cuối cùng
+## `git reset` - hủy commit cuối hoặc hủy đưa thay đổi vào vùng staging
+- `git reset --soft HEAD~1` hủy commit cuối, con trỏ HEAD sẽ chuyển về commit trước đó, những thay đổi của commit cuối được chuyển vào vùng **staged** nhằm để có cơ hội commit lại hoặc sửa cú pháp
+- `git reset --hard HEAD~1` hủy commit cuối, con trỏ HEAD sẽ chuyển về commit trước đó, những thay đổi của commit sẽ bị hủy hoàn toàn
+- `git reset` hủy bỏ các thông tin cập nhật tại vùng **staged**
+- `git reset -- filename` hủy bỏ thông tin cập nhật của một file bất kì tại vùng **staged**
