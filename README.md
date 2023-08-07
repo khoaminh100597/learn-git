@@ -17,3 +17,7 @@
 ## `git rm [filename]` - xóa filename khỏi thư mục làm việc
 - `git rm [filename]` xóa filename khỏi thư mục làm việc và thông tin xóa đưa luôn vào kế hoạch commit **staged**
 - Nếu xóa bằng tay filename, thì thông tin xóa chưa đưa vào **staged**
+## `git commit` - lưu dữ liệu vào hệ thống Git
+- `git commit -m "Ghi chú về commit"` tạo commit cơ bản với nội dung lấy từ vùng **staged**
+- `git commit -a -m "Ghi chú về commit"` tạo commit cơ bản đưa các file đang được giám sát có sự thay đổi vào vùng **staged**
+- `git commit --amend -m "Ghi chú về commit"` cập nhật thông tin vào commit cuối, hay ta có thể hiểu tạo commit mới thay thế cho commit cuối cùng
