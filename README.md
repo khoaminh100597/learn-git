@@ -52,3 +52,14 @@
 - `git switch --detach [HASH]` chuyển về làm việc tại nhánh tạm thời bắt đầu từ một commit có mã HASH
 ## `git restore` - dùng để phục hồi các file trong thư mục làm việc
 - `git restore .` phục hồi các file từ vùng **staged** (nếu không thì từ vùng **commit cuối**)
+## `git branch` - dùng để quản lý nhánh
+- `git branch` liệt kê các nhánh
+- `git branch -v` liệt kê các nhánh và commit cuối
+- `git branch --merged` liệt kê các nhánh merge với nhánh hiện tại
+- `git branch --no-merged` liệt kế các nhánh không merge với nhánh hiện tại
+- `git branch -d [branch]` xóa nhánh
+## `git merge` - dùng để gộp nhánh này vào nhánh khác
+- `git merge [branch]` dùng để gộp các nhánh này vào nhánh kia
+- Nếu 2 nhánh nằm cùng một phía, thì việc gộp không tạo ra commit mới
+- Nếu 2 nhánh không nằm cùng một phía, thì ta cần xử lý xung đột (nếu có), sử dụng `git add` để đánh chỉ mục vào vùng `staged`, và `git commit` tạo commit mới nối giữa 2 nhánh
+
