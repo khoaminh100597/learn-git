@@ -3,6 +3,10 @@
 - `git init` Khởi tạo một Repository mới (Git Repo) ở local
 - `git init --bare` Khởi tạo một Repository chỉ có chức năng lưu trữ, không có thư mục làm việc, không soạn thảo, sửa file, thực hiện commit trực tiếp tại dự án
 ## `git clone [path]` - sao chép một Repository có địa chỉ là **path**
+## `git config` - làm việc cấu hình Git
+- `git config --list` xem thông tin cấu hình Git
+- `git config --global user.name [user_name]` cấu hình tên người dùng Git
+- `git config --global user.email [user_emal]` cấu hình email của người dùng Git
 ## `git status` - hiển thị thông tin khác nhau giữa các file trong các trường hợp
 1. Khác nhau giữa các file trong vùng **staged** và **commit tại con trỏ** (thường HEAD ở vị trí commit cuối)
 2. Khác nhau giữa các file trong **thư mục làm việc** và trong **staged**
@@ -34,6 +38,7 @@
 - `git log --after="year-month-day" --before="year-month-day"` hiển thị thông tin commit lọc theo thời gian
 - `git log --author="tác giả"` hiển thị thông tin commit lọc theo tác giả, có thể kết hợp nhiều người bằng ký hiệu `\|`
 - `git log --grep="Ghi chú về commit"` hiển thị thông tin commit lọc theo thông tin ghi chú
+- `git log [remote_name]/[branch]` hiển thị thông tin các commit 
 ## `git diff` - kiểm tra sự thay đổi trên Git
 - `git diff` kiểm tra sự thay đổi các file giữa thư mục làm việc và các file trong **staged** (nếu không có thì so sánh với các file ở **commit cuối**)
 - `git diff --staged` kiểm tra sự thay đổi các file giữa vùng **staged** và vùng **commit cuối**
@@ -53,18 +58,47 @@
 ## `git restore` - dùng để phục hồi các file trong thư mục làm việc
 - `git restore .` phục hồi các file từ vùng **staged** (nếu không thì từ vùng **commit cuối**)
 ## `git branch` - dùng để quản lý nhánh
-- `git branch` liệt kê các nhánh
+- `git branch` liệt kê các nhánh **Local Repository**
 - `git branch -v` liệt kê các nhánh và commit cuối
 - `git branch --merged` liệt kê các nhánh merge với nhánh hiện tại
 - `git branch --no-merged` liệt kế các nhánh không merge với nhánh hiện tại
 - `git branch -d [branch]` xóa nhánh
+- `git branch -a` liệt kê các nhánh **Local Repository** và **Remote Repository**
 ## `git merge` - dùng để gộp nhánh này vào nhánh khác
 - `git merge [branch]` dùng để gộp các nhánh này vào nhánh kia
+- `git merge [remote_name]/[branch]` dùng để gộp nhánh tại **Remote Repository**
 - Nếu 2 nhánh nằm cùng một phía, thì việc gộp không tạo ra commit mới
 - Nếu 2 nhánh không nằm cùng một phía, thì ta cần xử lý xung đột (nếu có), sử dụng `git add` để đánh chỉ mục vào vùng `staged`, và `git commit` tạo commit mới nối giữa 2 nhánh
 ![merge branch](/assets/merge.png)
 ## `git rebase` - dùng để gộp các commit từ nhánh này vào nhánh khác
 - `git rebase [branch]` dùng để gộp các commit từ nhánh này vào nhánh khác, bằng cách xây dựng lại các commit base kế thừa từ nhánh khác và viết lại lịch sử commit sau các commit cơ sở mới
 ![rebase branch](/assets/rebase.png)
-
-
+## `git remote` - làm việc với remote repository
+- `git remote` liệt kê tên các remote
+- `git remote -v` liệt kê các **Remote Repository** và các **địa chỉ Remote**
+- `git remote add [name_remote] [addr_remote]` thiết lập Remote Repository
+1. **name_remote** là tên remote, ví dụ là origin, abx, xyz...
+2. **addr_remote** là địa chỉ Remote Repository, ví dụ là gitusername@domain.com:myproject.git
+- `git remote rm [name_remote]` xóa **Remote Repository**
+## `git push` - upload dữ liệu lên remote repository/delete nhánh trên remote
+- `git push [name_remote] [branch]` upload dữ liệu (các commit) của nhánh lên **Remote Repository**
+- `git push [name_remote] --all` upload dữ liệu (các commit) tất cả các nhánh lên **Remote Repository**
+- `git push --delete [name_remote] [branch]` xóa nhánh của **Remote Repository**
+## `git fetch` - lấy dữ liệu mới từ **Remote Repository**, những loại dữ liệu này trên **Local Repository** chưa có
+- `git fetch [name_remote]` Lấy dữ liệu mới từ Remote Repository, những loại dữ liệu này trên Local Repository là chưa có (ví dụ dữ liệu do người khác mới đưa lên, tên các commit, các branch)
+- Lệnh này không làm ảnh hưởng đến các code đang có của dự án trên Local, nó chỉ lấy về nhưng thông tin file chưa có
+- Lệnh này nên thực hiện khi mới `git clone` dự án về **Local Repository**
+## `git pull` - cập nhật các commit mới từ remote về local
+- `git pull [name_remote] [branch]` lấy dữ liệu từ nhánh bất kì từ **Remote Repository**
+- `git pull [name_remote] --all` lấy dữ liệu từ tất cả nhánh từ **Remote Repository**
+## `git tag` - làm việc với Tag trong Git
+- `git tag` liệt kê các Tag
+- `git tag -a [Tag_name] -m [Ghi chú về Tag] [HASH]` tạo ra 1 Tag có tên, và dòng chú thích tại commit có mã HASH bất kì
+- `git tag -a [Tag_name] -m [Ghi chú về Tag]` tạo ra 1 Tag có tên, và dòng chú thích tại commit cuối
+- `git show [Tag_name]` xem thông tin về commit được gắn Tag
+- `git tag -d [Tag_name]` xóa 1 Tag
+- `git checkout [Tag_name]` quay về một commit bằng Tag, tạo ra một nhánh tạm
+- `git checkout -b [branch] [Tag_name]` tạo ra một nhánh xuất phát từ commit có gắn Tag
+- `git push [name_remote] [Tag_name]` cập nhật Tag lên trên **Remote Repository**
+- `git push [name_remote] --tags` cập nhật các Tag lên trên **Remote Repository**
+- `git push --delte [name_remote] [Tag_name]` xóa tag tại **Remote Repository**
