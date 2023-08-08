@@ -44,4 +44,11 @@
 - `git checkout [HASH]` chuyển về một commit có mã HASH, và Git ở chế độ head detached, ta làm việc trên một nhánh tạm thời
 - `git checkout [HASH] [filename]` phục hồi file từ phiên bản commit có mã HASH xác định
 - `git checkout -- *.html` phục hồi các file đuôi .html từ vùng **staged** (nếu không thì từ vùng **commit cuối**)
-- `git checkout -- .` phục hồi tất cả các file từ vùng **staged** (nếu không thì từ vùng **commit cuối**
+- `git checkout -- .` phục hồi tất cả các file từ vùng **staged** (nếu không thì từ vùng **commit cuối**)
+## `git switch` - dùng để chuyển nhánh và có thể tạo nhánh mới
+- `git switch [branch]` chuyển làm việc sang nhánh khác
+- `git switch -c [branch] [HASH]` tạo nhánh mới, kích hoạt nhánh bắt đầu từ một commit có mã HASH
+- `git switch -c [branch]` tạo nhánh mới, từ commit cuối
+- `git switch --detach [HASH]` chuyển về làm việc tại nhánh tạm thời bắt đầu từ một commit có mã HASH
+## `git restore` - dùng để phục hồi các file trong thư mục làm việc
+- `git restore .` phục hồi các file từ vùng **staged** (nếu không thì từ vùng **commit cuối**)
