@@ -62,4 +62,9 @@
 - `git merge [branch]` dùng để gộp các nhánh này vào nhánh kia
 - Nếu 2 nhánh nằm cùng một phía, thì việc gộp không tạo ra commit mới
 - Nếu 2 nhánh không nằm cùng một phía, thì ta cần xử lý xung đột (nếu có), sử dụng `git add` để đánh chỉ mục vào vùng `staged`, và `git commit` tạo commit mới nối giữa 2 nhánh
+![merge branch](/assets/merge.png)
+## `git rebase` - dùng để gộp các commit từ nhánh này vào nhánh khác
+- `git rebase [branch]` dùng để gộp các commit từ nhánh này vào nhánh khác, bằng cách xây dựng lại các commit base kế thừa từ nhánh khác và viết lại lịch sử commit sau các commit cơ sở mới
+![rebase branch](/assets/rebase.png)
+
 
